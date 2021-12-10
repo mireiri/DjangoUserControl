@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html jang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>TOP</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" 
+         href="{% static 'triplog/style.css' %}">
+    </head>
+    <body>
+        {% if request.user.is_authenticated %}
+            <h3>
+                こんにちは 【{{ user.username }}】 さん | 
+                <a href="{% url 'logout'%}">ログアウト</a>
+            </h3>
+        {% endif %}
+
+        <h1>{{ title }}</h1>
+
+        {% if messages %}
+		    {% for message in messages %}
+			    <p class="flashMessage">{{ message }}</p>
+		    {% endfor %}
+        {% endif %}
+
+        <table>
+            <tr>
+                <th>作成者</th>
+                <th>タイトル</th>
+                <th>作成日</th>
+            </tr>
+            {% for i in all_data %}
+            <tr>
+                <td>{{ i.author }}</td>
+                <td><a href="{% url 'detail' id=i.id %}">{{ i.title }}</a></td>
+                <td>{{ i.create_date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p><a href="{% url 'new' %}" class="button">新規作成</a></p>
+
+    </body>
+</html>

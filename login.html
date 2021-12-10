@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>LOGIN</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" 
+         href="{% static 'triplog/style.css' %}">
+    </head>
+    <body>
+        <h1>ログイン画面</h1>
+        <p>こんにちは！ユーザー名とパスワードを入力してください</p>
+
+        <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">ログイン</button>
+        </form>
+
+        <p><a href="{% url 'signup' %}" class="entry">サインアップ</a></p>
+
+    </body>
+</html>

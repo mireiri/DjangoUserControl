@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html jang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>DETAIL</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css"
+         href="{% static 'triplog/style.css' %}">
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <h2>【 {{ data.title }} 】</h2>
+        <p>{{ data.content}}</p>
+
+        <div class="map">
+            <p>{{ map | safe }}</p>
+        </div>
+
+        {% if request.user == data.author %}
+            <a href="{% url 'edit' id=data.id %}" class="button">編集</a>
+            <a href="{% url 'delete' id=data.id %}" class="delete_button">削除</a>
+        {% endif %}
+    
+        <p><a href="{% url 'index' %}">一覧画面に戻る</a></p>
+    </body>
+</html>
+

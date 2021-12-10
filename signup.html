@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>SIGNUP</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css"
+         href="{% static 'triplog/style.css' %}">
+    </head>
+    <body>
+        <h1>サインアップ画面</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">新規登録</button>
+        </form>
+        <p><a href="{% url 'login' %}">ログイン画面に戻る</a></p>
+    </body>
+</html>

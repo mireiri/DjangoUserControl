@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>LOGOUT</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css"
+         href="{% static 'triplog/style.css' %}">
+    </head>
+    <body>
+        <h1>ログアウトしました</h1>
+        <h2>また来てね！</h2>
+        <p><a href="{% url 'login' %}" class="entry">もう一度ログインする</a></p>
+    </body>
+</html>
